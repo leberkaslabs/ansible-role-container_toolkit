@@ -1,0 +1,35 @@
+---
+argument_specs:
+  main:
+    short_description: container_toolkit
+    description: Install the NVIDIA Container Toolkit.
+    author: dudecalledbro
+    options:
+      container_tookit_repo_url:
+        type: str
+        required: true
+        description: NVIDIA Container Toolkit Repository URL.
+      container_toolkit_repository_filename:
+        type: str
+        required: true
+        description: NVIDIA Container Toolkit Repository Filename.
+      container_toolkit_dnf_repository:
+        type: str
+        required: true
+        description: NVIDIA Container Toolkit DNF Repository.
+      container_toolkit_apt_architecture:
+        type: str
+        required: true
+        description: NVIDIA Container Toolkit APT Repository architecture.
+      container_toolkit_apt_repository:
+        type: str
+        required: true
+        description: NVIDIA Container Toolkit APT Repository.
+      container_toolkit_apt_gpg_key:
+        type: str
+        required: true
+        description: NVIDIA Container Toolkit GPG Key URL for APT Authentication.
+      container_toolkit_docker_config:
+        type: dict
+        required: false
+        description: Docker Daemon Configuration for NVIDIA Runtime.

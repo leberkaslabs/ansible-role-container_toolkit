@@ -1,0 +1,18 @@
+---
+- name: Install the requirements
+  ansible.builtin.apt:
+    name:
+      - curl
+      - gnupg2
+      # Packages required for deb822 repository compatibility
+      - python3-debian
+    install_recommends: false
+    state: present
+
+- name: Configure the NVIDIA Container Toolkit APT repository
+  ansible.builtin.deb822_repository:
+    name: "{{ container_toolkit_repository_filename }}"
+    types: deb
+    uris: "{{ container_toolkit_apt_repository }}"
+    signed_by: "{{ container_toolkit_apt_gpg_key }}"
+    suites: /

@@ -1,0 +1,31 @@
+---
+# NVIDIA Container Toolkit Repository URL
+# This is the base URL for the NVIDIA container toolkit repository, used for both DNF and APT installations
+container_tookit_repo_url: https://nvidia.github.io/libnvidia-container
+
+# NVIDIA Container Toolkit Repository Filename
+# This is the name of the repository file used for configuring the repository on the system
+container_toolkit_repository_filename: nvidia-container-toolkit
+
+# NVIDIA Container Toolkit DNF Repository Configuration
+# This specifies the DNF repository URL for installing the NVIDIA container toolkit package
+container_toolkit_dnf_repository: "{{ container_tookit_repo_url }}/stable/rpm/nvidia-container-toolkit.repo "
+
+# NVIDIA Container Toolkit APT Repository Configuration
+# This sets the APT repository URL, adjusting the architecture for arm64 if applicable
+container_toolkit_apt_architecture: "{{ 'arm64' if ansible_facts.architecture == 'aarch64' else ansible_facts.architecture }}"
+container_toolkit_apt_repository: "{{ container_tookit_repo_url }}/stable/deb/{{ container_toolkit_apt_architecture }}"
+
+# NVIDIA Container Toolkit GPG Key URL for APT Authentication
+# This defines the URL for the GPG key used to authenticate APT packages from the NVIDIA repository
+container_toolkit_apt_gpg_key: "{{ container_tookit_repo_url }}/gpgkey"
+
+# Docker Daemon Configuration for NVIDIA Runtime
+# This section configures Docker to use the NVIDIA runtime as the default
+container_toolkit_docker_config:
+  # Set default runtime (required for kubernetes)
+  runtimes:
+    nvidia:
+      path: /usr/bin/nvidia-container-runtime
+      runtimeArgs: []
+  default-runtime: nvidia

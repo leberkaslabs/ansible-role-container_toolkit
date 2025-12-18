@@ -1,0 +1,31 @@
+---
+- name: Setup the NVIDIA Container Toolkit repository
+  ansible.builtin.include_tasks:
+    file: "{{ 'setup_' ~ ansible_facts.os_family | lower ~ '.yml' }}"
+
+- name: Install the NVIDIA Container Toolkit packages
+  ansible.builtin.package:
+    name:
+      - libnvidia-container-tools
+      - libnvidia-container1
+      - nvidia-container-toolkit
+      - nvidia-container-toolkit-base
+    update_cache: true
+    state: present
+
+- name: Ensure the Docker configuration directory exists
+  ansible.builtin.file:
+    path: /etc/docker
+    owner: root
+    group: root
+    mode: "0755"
+    state: directory
+
+- name: Manage custom Docker daemon configuration
+  ansible.builtin.copy:
+    content: "{{ container_toolkit_docker_config | to_nice_json }}"
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: "0644"
+  notify: restart docker
