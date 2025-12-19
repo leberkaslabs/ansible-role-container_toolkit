@@ -1,5 +1,5 @@
 ---
 roles:
   - name: dudecalledbro.docker
-    src: https://github.com/DudeCalledBro/ansible-role-docker.git
+    src: https://github.com/leberkaslabs/ansible-role-docker.git
     version: main
