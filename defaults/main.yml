@@ -13,7 +13,7 @@ container_toolkit_dnf_repository: "{{ container_tookit_repo_url }}/stable/rpm/nv
 
 # NVIDIA Container Toolkit APT Repository Configuration
 # This sets the APT repository URL, adjusting the architecture for arm64 if applicable
-container_toolkit_apt_architecture: "{{ 'arm64' if ansible_facts.architecture == 'aarch64' else ansible_facts.architecture }}"
+container_toolkit_apt_architecture: "{{ 'arm64' if ansible_facts.architecture == 'aarch64' else 'amd64' }}"
 container_toolkit_apt_repository: "{{ container_tookit_repo_url }}/stable/deb/{{ container_toolkit_apt_architecture }}"
 
 # NVIDIA Container Toolkit GPG Key URL for APT Authentication
