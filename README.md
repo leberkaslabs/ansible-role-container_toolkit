@@ -1,4 +1,4 @@
-# Ansible Role: NVIDIA Container Toolkit
+# Ansible Role: container_toolkit
 
 [![Ansible Molecule](https://github.com/leberkaslabs/ansible-role-container_toolkit/actions/workflows/molecule.yml/badge.svg)](https://github.com/leberkaslabs/ansible-role-container_toolkit/actions/workflows/molecule.yml)
 
@@ -16,11 +16,9 @@ The default values for the variables are set in [defaults/main.yml](defaults/mai
 ```yaml
 - hosts: all
   roles:
-    - role: dudecalledbro.container_toolkit
+    - role: leberkaslabs.container_toolkit
 ```
 
 ## License
 
-Copyright © 2025 Niclas Spreng
-
-Licensed under the [MIT license](LICENSE).
+Copyright (c) 2026 Niclas Spreng

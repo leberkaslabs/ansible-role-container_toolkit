@@ -1,9 +1,9 @@
 ---
 argument_specs:
   main:
-    short_description: container_toolkit
+    author: Niclas Spreng
     description: Install the NVIDIA Container Toolkit.
-    author: dudecalledbro
+    short_description: container_toolkit
     options:
       container_tookit_repo_url:
         type: str
